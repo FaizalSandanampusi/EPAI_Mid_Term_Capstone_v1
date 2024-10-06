@@ -39,7 +39,7 @@ jobs:
         python - <<EOF
         from PIL import Image, ImageDraw, ImageFont
         import textwrap
-        with open('test_results.txt', 'r') as f:  # Read from the test results file
+        with open('tests/test_results.txt', 'r') as f:  # Read from the tests folder
             results = f.read()
         img = Image.new('RGB', (800, 600), color='white')
         d = ImageDraw.Draw(img)
