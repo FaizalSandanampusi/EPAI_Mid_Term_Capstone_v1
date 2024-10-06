@@ -1,5 +1,7 @@
 ![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg?label=successfulcolor=green)
 
+![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg?label=successfulcolor=green)
+
 ![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg?label=failedcolor=red)
 
 ![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg?label=successfulcolor=green)
@@ -188,6 +190,10 @@ The DataLoader package provides a comprehensive solution for loading and managin
 Feel free to further adjust or let me know if you want additional changes!
 =======
 If you're using GitHub Actions for CI/CD, you can check the status of the tests with the badge included at the top of this README.
+
+## Test Results
+
+![Test Results](tests/test_results.png)
 
 ## Test Results
 
