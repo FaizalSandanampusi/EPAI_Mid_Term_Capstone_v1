@@ -42,6 +42,7 @@ jobs:
         with open('tests/test_results.txt', 'r') as f:  # Read from the tests folder
             results = f.read()
         img = Image.new('RGB', (800, 600), color='white')
+        img.save('tests/test_results.png')  # Save the image in the tests folder
         d = ImageDraw.Draw(img)
         font = ImageFont.load_default()
         lines = textwrap.wrap(results, width=70)
@@ -49,7 +50,6 @@ jobs:
         for line in lines:
             d.text((10, y_text), line, font=font, fill=(0, 0, 0))
             y_text += 20
-        img.save('tests/test_results.png')  # Save the image in the tests folder
         EOF
 
     - name: Update README badge on success
