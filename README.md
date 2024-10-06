@@ -1,3 +1,5 @@
+![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg?label=successfulcolor=green)
+
 ![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg)
 
 ![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg)
@@ -104,3 +106,7 @@ pytest tests/test_dataloader.py
 ```
 
 If you're using GitHub Actions for CI/CD, you can check the status of the tests with the badge included at the top of this README.
+
+## Test Results
+
+![Test Results](test_results.png)
