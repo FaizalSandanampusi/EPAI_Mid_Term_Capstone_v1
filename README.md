@@ -1,3 +1,5 @@
+![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg)
+
 
 # DataLoader Package
 
