@@ -26,7 +26,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
-        pip install Pillow  # Added Pillow for image processing
 
     - name: Run tests
       id: run_tests  # Added an ID to reference this step
@@ -34,62 +33,23 @@ jobs:
         python -m unittest discover tests > tests/test_results.txt
         echo "Tests completed."  # Indicate tests are done
 
-    - name: Capture test results image
-      run: |
-        python - <<EOF
-        from PIL import Image, ImageDraw, ImageFont
-        import textwrap
-        
-        # Read the test results from the text file
-        with open('tests/test_results.txt', 'r') as f:  
-            results = f.read()
-        
-        # Create an image to capture the results
-        img = Image.new('RGB', (800, 600), color='white')
-        d = ImageDraw.Draw(img)
-        font = ImageFont.load_default()
-        lines = textwrap.wrap(results, width=70)
-        y_text = 10
-        for line in lines:
-            d.text((10, y_text), line, font=font, fill=(0, 0, 0))
-            y_text += 20
-        
-        # Save the image in the tests folder
-        img.save('tests/test_results.png')
-        EOF
-
     - name: List files
       run: |
         ls -la README.md tests/
 
-    - name: Check if test_results.png exists
+    - name: Update README with test results
       run: |
-        if [ -f tests/test_results.png ]; then
-          echo "Test results image exists."
-        else
-          echo "Test results image does not exist."
-        fi
-
-    - name: Update README badge on success
-      if: success()  # Only run this step if previous steps were successful
-      run: |
-        # Update the badge in README.md to show "successful"
-        sed -i '1s#^#![CI/CD](https://github.com/${{ github.repository }}/workflows/Python%20Tests/badge.svg?label=successful&color=green)\n\n#' README.md
-        echo -e "\n## Test Results\n\n![Test Results](tests/test_results.png)" >> README.md  # Add test results image
-
-    - name: Update README badge on failure
-      if: failure()  # Only run this step if any previous step failed
-      run: |
-        # Update the badge in README.md to show "failed"
-        sed -i '1s#^#![CI/CD](https://github.com/${{ github.repository }}/workflows/Python%20Tests/badge.svg?label=failed&color=red)\n\n#' README.md
+        echo -e "\n## Test Results\n" >> README.md  # Start a new section for test results
+        cat tests/test_results.txt >> README.md  # Append the test results
+        echo -e "\nTest Passed !!\n" >> README.md  # Add "Test Passed !!" at the end
+      shell: bash  # Ensure the shell used can handle echo options correctly
 
     - name: Commit and push changes
-      if: success() || failure()  # Commit changes regardless of success or failure
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git add README.md tests/test_results.png tests/test_results.txt  # Ensure both README and image are added
-        git commit -m "Update CI/CD badge and test results" || echo "No changes to commit"
+        git add README.md tests/test_results.txt  # Ensure README and results text file are added
+        git commit -m "Update README with test results" || echo "No changes to commit"
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
