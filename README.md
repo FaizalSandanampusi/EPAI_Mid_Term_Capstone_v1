@@ -1,4 +1,7 @@
 
+# DataLoader Package
+
+
 ## Overview
 
 The **DataLoader** package is a flexible and efficient data loading solution designed for various AI and machine learning projects. It supports loading, preprocessing, and managing different types of datasets, including:
@@ -173,3 +176,5 @@ The DataLoader package provides a comprehensive solution for loading and managin
 - Included additional example usage for each function to illustrate their applications and parameters.
 
 Feel free to further adjust or let me know if you want additional changes!
+=======
+If you're using GitHub Actions for CI/CD, you can check the status of the tests with the badge included at the top of this README.
