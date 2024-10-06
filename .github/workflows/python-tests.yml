@@ -75,7 +75,7 @@ jobs:
       if: success()  # Only run this step if previous steps were successful
       run: |
         # Update the badge in README.md to show "successful"
-        sed -i '1s#^#![CI/CD](https://github.com/${{ github.repository }}/workflows/Python%20Tests/badge.svg?label=successful&color=green)\n\n#' README.md
+        sed -i '1s#^#![CI/CD](https://github.com/${{ github.repository }}/workflows/Python%20Tests/badge.svg?label=successful&color=blue&timestamp='$(date +%s)')\n\n#' README.md
         echo -e "\n## Test Results\n\n![Test Results](tests/test_results.png)" >> README.md  # Add test results image
 
     - name: Update README badge on failure
