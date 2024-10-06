@@ -1,15 +1,3 @@
-![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg?label=successfulcolor=green)
-
-![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg?label=successfulcolor=green)
-
-![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg?label=failedcolor=red)
-
-![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg?label=successfulcolor=green)
-
-![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg?label=successfulcolor=green)
-
-![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg?label=successfulcolor=green)
-
 
 # DataLoader Package
 
@@ -187,57 +175,5 @@ The DataLoader package provides a comprehensive solution for loading and managin
 - Added detailed function descriptions for key methods in the DataLoader package.
 - Included additional example usage for each function to illustrate their applications and parameters.
 
-Feel free to further adjust or let me know if you want additional changes!
+
 =======
-If you're using GitHub Actions for CI/CD, you can check the status of the tests with the badge included at the top of this README.
-
-## Test Results
-
-![Test Results](tests/test_results.png)
-
-## Test Results
-
-![Test Results](tests/test_results.png)
-
-## Test Results
-
-![Test Results](tests/test_results.png)
-
-## Test Results
-
-![Test Results](tests/test_results.png)
-
-## Test Results
-
-![Test Results](tests/test_results.png)
-
-## Test Results
-
-Downloading CIFAR-10 dataset...
-Function 'download_dataset' took 1.87s to complete.
-Function 'load_data' took 1.90s to complete.
-Processing batch of size 64
-Processing batch of size 64
-Processing batch of size 64
-Processing batch of size 64
-Processing batch of size 64
-Processing batch of size 64
-Processing batch of size 64
-Processing batch of size 64
-Processing batch of size 64
-Processing batch of size 64
-Processing batch of size 64
-Processing batch of size 64
-Processing batch of size 64
-Processing batch of size 64
-Processing batch of size 64
-Processing batch of size 40
-Downloading MNIST dataset...
-Function 'download_dataset' took 0.33s to complete.
-Function 'load_data' took 0.35s to complete.
-Function 'load_data' took 0.02s to complete.
-Function 'sample_function' took 0.00s to complete.
-Function 'load_data' took 0.02s to complete.
-
-Test Passed !!
-
