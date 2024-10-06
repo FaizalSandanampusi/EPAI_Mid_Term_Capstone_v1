@@ -1,7 +1,4 @@
-![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg?label=successfulcolor=bluetimestamp=1728236612)
-
-![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/actions/workflows/python-tests.yml/badge.svg?label=successful&color=blue)
-
+![CI/CD](https://img.shields.io/github/actions/workflow/status/FaizalSandanampusi/EPAI_Mid_Term_Capstone/python-tests.yml?label=successful&color=blue)
 
 
 # DataLoader Package
