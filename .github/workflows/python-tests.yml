@@ -31,9 +31,9 @@ jobs:
     - name: Run tests
       id: run_tests  # Added an ID to reference this step
       run: |
-        python -m unittest discover tests > tests/test_results.txt
+        python -m unittest discover tests > test_results.txt
         echo "Tests completed."  # Indicate tests are done
-        echo -e "\n15 Tests Passed !!\n" >> tests/test_results.txt  # Add "Test Passed !!" at the end
+        echo -e "\n15 Tests Passed !!\n" >> test_results.txt  # Add "Test Passed !!" at the end
 
     - name: Capture test results image
       run: |
@@ -42,7 +42,7 @@ jobs:
         import textwrap
         
         # Read the test results from the text file
-        with open('tests/test_results.txt', 'r') as f:  
+        with open('test_results.txt', 'r') as f:  
             results = f.read()
         
         # Create an image to capture the results

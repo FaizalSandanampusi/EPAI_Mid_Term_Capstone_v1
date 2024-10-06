@@ -1,5 +1,3 @@
-![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg?label=successfulcolor=green)
-
 
 # DataLoader Package
 
@@ -179,7 +177,3 @@ The DataLoader package provides a comprehensive solution for loading and managin
 
 
 =======
-
-## Test Results
-
-![Test Results](tests/test_results.png)
