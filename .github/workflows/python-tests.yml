@@ -40,7 +40,7 @@ jobs:
         git config --local user.name "github-actions[bot]"
         git add README.md
         git commit -m "Update CI/CD badge" || echo "No changes to commit"
-        git push
+        git push https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }} HEAD:main
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
