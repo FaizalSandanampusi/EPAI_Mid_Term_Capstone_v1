@@ -1,3 +1,5 @@
+![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg?label=successfulcolor=green)
+
 <<<<<<< HEAD
 # DataLoader Package
 =======
@@ -192,3 +194,7 @@ If you're using GitHub Actions for CI/CD, you can check the status of the tests 
 
 ![Test Results](test_results.png)
 >>>>>>> 2153a75f25b6d22788b8a5174281d39afb20d087
+
+## Test Results
+
+![Test Results](test_results.png)
