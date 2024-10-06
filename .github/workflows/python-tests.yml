@@ -61,7 +61,7 @@ jobs:
     - name: Update README
       if: success()
       run: |
-        sed -i '1s/^/![CI\/CD](https:\/\/github.com\/${{ github.repository }}\/workflows\/Python%20Tests\/badge.svg)\n\n/' README.md
+        sed -i '1s#^#![CI/CD](https://github.com/${{ github.repository }}/workflows/Python%20Tests/badge.svg)\n\n#' README.md
         echo -e "\n## Test Results\n\n![Test Results](test_results.png)" >> README.md
 
     - name: Commit changes
