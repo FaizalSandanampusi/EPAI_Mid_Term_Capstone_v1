@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-# DataLoader Package
-=======
-![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg?label=successfulcolor=green)
-
-![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg)
-
-![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg)
->>>>>>> 2153a75f25b6d22788b8a5174281d39afb20d087
-
-
 
 ## Overview
 
@@ -100,7 +89,6 @@ for batch in data_loader.get_batches(csv_data, batch_size=10):
     print(batch)
 ```
 
-<<<<<<< HEAD
 ### Data Augmentation
 
 If you're working with image datasets, the DataLoader can also apply data augmentation techniques:
@@ -185,10 +173,3 @@ The DataLoader package provides a comprehensive solution for loading and managin
 - Included additional example usage for each function to illustrate their applications and parameters.
 
 Feel free to further adjust or let me know if you want additional changes!
-=======
-If you're using GitHub Actions for CI/CD, you can check the status of the tests with the badge included at the top of this README.
-
-## Test Results
-
-![Test Results](test_results.png)
->>>>>>> 2153a75f25b6d22788b8a5174281d39afb20d087
