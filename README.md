@@ -210,3 +210,34 @@ If you're using GitHub Actions for CI/CD, you can check the status of the tests 
 ## Test Results
 
 ![Test Results](tests/test_results.png)
+
+## Test Results
+
+Downloading CIFAR-10 dataset...
+Function 'download_dataset' took 1.87s to complete.
+Function 'load_data' took 1.90s to complete.
+Processing batch of size 64
+Processing batch of size 64
+Processing batch of size 64
+Processing batch of size 64
+Processing batch of size 64
+Processing batch of size 64
+Processing batch of size 64
+Processing batch of size 64
+Processing batch of size 64
+Processing batch of size 64
+Processing batch of size 64
+Processing batch of size 64
+Processing batch of size 64
+Processing batch of size 64
+Processing batch of size 64
+Processing batch of size 40
+Downloading MNIST dataset...
+Function 'download_dataset' took 0.33s to complete.
+Function 'load_data' took 0.35s to complete.
+Function 'load_data' took 0.02s to complete.
+Function 'sample_function' took 0.00s to complete.
+Function 'load_data' took 0.02s to complete.
+
+Test Passed !!
+
