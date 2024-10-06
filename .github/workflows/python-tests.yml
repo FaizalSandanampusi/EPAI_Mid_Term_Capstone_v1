@@ -26,23 +26,49 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install Pillow  # Added Pillow for image processing
 
     - name: Run tests
       run: |
-        python -m unittest discover tests
+        python -m unittest discover tests > test_results.txt
+        echo "Tests completed."  # Indicate tests are done
+
+    - name: Capture test results image
+      run: |
+        python - <<EOF
+        from PIL import Image, ImageDraw, ImageFont
+        import textwrap
+        with open('test_results.txt', 'r') as f:
+            results = f.read()
+        img = Image.new('RGB', (800, 600), color='white')
+        d = ImageDraw.Draw(img)
+        font = ImageFont.load_default()
+        lines = textwrap.wrap(results, width=70)
+        y_text = 10
+        for line in lines:
+            d.text((10, y_text), line, font=font, fill=(0, 0, 0))
+            y_text += 20
+        img.save('test_results.png')
+        EOF
 
     - name: Update README badge
       if: success()
       run: |
-        sed -i '1s#^#![CI/CD](https://github.com/${{ github.repository }}/workflows/Python%20Tests/badge.svg)\n\n#' README.md
+        sed -i '1s#^#![CI/CD](https://github.com/${{ github.repository }}/workflows/Python%20Tests/badge.svg?label=successful&color=green)\n\n#' README.md
+        echo -e "\n## Test Results\n\n![Test Results](test_results.png)" >> README.md
+
+    - name: Update README badge on failure
+      if: failure()
+      run: |
+        sed -i '1s#^#![CI/CD](https://github.com/${{ github.repository }}/workflows/Python%20Tests/badge.svg?label=failed&color=red)\n\n#' README.md
 
     - name: Commit and push changes
-      if: success()
+      if: success() || failure()  # Commit changes regardless of success or failure
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git add README.md
-        git commit -m "Update CI/CD badge" || echo "No changes to commit"
+        git add README.md test_results.png
+        git commit -m "Update CI/CD badge and test results" || echo "No changes to commit"
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
