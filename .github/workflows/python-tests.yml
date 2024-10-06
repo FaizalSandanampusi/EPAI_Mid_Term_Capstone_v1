@@ -89,7 +89,7 @@ jobs:
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git add README.md tests/test_results.png tests/test_results.txt  # Ensure both README and image are added
+        git add README.md tests/test_results.png # Ensure both README and image are added
         git commit -m "Update CI/CD badge and test results" || echo "No changes to commit"
         git push
       env:
