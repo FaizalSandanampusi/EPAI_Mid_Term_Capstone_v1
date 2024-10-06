@@ -12,10 +12,10 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
     - name: Set up Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.x'
 
@@ -29,7 +29,7 @@ jobs:
         python -m unittest discover tests > test_results.txt
 
     - name: Capture test results
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
         name: test-results
         path: test_results.txt
@@ -48,7 +48,7 @@ jobs:
 
     - name: Commit changes
       if: success()
-      uses: EndBug/add-and-commit@v7
+      uses: EndBug/add-and-commit@v9
       with:
         author_name: github-actions[bot]
         author_email: github-actions[bot]@users.noreply.github.com
@@ -57,9 +57,7 @@ jobs:
 
     - name: Push changes
       if: success()
-      run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add README.md test_results.png
-        git commit -m "Update CI/CD badge and test results"
-        git push
+      uses: ad-m/github-push-action@v0.6.0
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: ${{ github.ref }}
