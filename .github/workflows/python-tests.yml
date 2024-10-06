@@ -13,6 +13,8 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
 
     - name: Set up Python
       uses: actions/setup-python@v4
@@ -64,18 +66,11 @@ jobs:
         sed -i '1s#^#![CI/CD](https://github.com/${{ github.repository }}/workflows/Python%20Tests/badge.svg)\n\n#' README.md
         echo -e "\n## Test Results\n\n![Test Results](test_results.png)" >> README.md
 
-    - name: Commit changes
+    - name: Commit and push changes
       if: success()
-      uses: EndBug/add-and-commit@v9
-      with:
-        author_name: github-actions[bot]
-        author_email: github-actions[bot]@users.noreply.github.com
-        message: 'Update CI/CD badge and test results'
-        add: 'README.md test_results.png'
-
-    - name: Push changes
-      if: success()
-      uses: ad-m/github-push-action@v0.6.0
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: ${{ github.ref }}
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add README.md test_results.png
+        git commit -m "Update CI/CD badge and test results"
+        git push https://${{ secrets.PAT }}@github.com/${{ github.repository }}.git HEAD:${{ github.ref }}
