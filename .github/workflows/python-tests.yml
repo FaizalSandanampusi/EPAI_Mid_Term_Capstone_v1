@@ -23,6 +23,7 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
+        pip install Pillow
 
     - name: Run tests
       run: |
@@ -37,8 +38,25 @@ jobs:
     - name: Generate test results image
       if: success()
       run: |
-        sudo apt-get install -y imagemagick
-        convert -size 800x600 xc:white -font DejaVu-Sans -pointsize 20 -fill black -annotate +20+30 "@test_results.txt" test_results.png
+        python - <<EOF
+        from PIL import Image, ImageDraw, ImageFont
+        import textwrap
+
+        with open('test_results.txt', 'r') as f:
+            results = f.read()
+
+        img = Image.new('RGB', (800, 600), color='white')
+        d = ImageDraw.Draw(img)
+        font = ImageFont.load_default()
+
+        lines = textwrap.wrap(results, width=70)
+        y_text = 10
+        for line in lines:
+            d.text((10, y_text), line, font=font, fill=(0, 0, 0))
+            y_text += 20
+
+        img.save('test_results.png')
+        EOF
 
     - name: Update README
       if: success()
