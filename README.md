@@ -1,3 +1,5 @@
+![CI/CD](https://github.com/FaizalSandanampusi/EPAI_Mid_Term_Capstone/workflows/Python%20Tests/badge.svg?label=successfulcolor=bluetimestamp=1728236962)
+
 ![CI/CD](https://img.shields.io/github/actions/workflow/status/FaizalSandanampusi/EPAI_Mid_Term_Capstone/python-tests.yml?label=successful&color=blue)
 
 
@@ -179,6 +181,10 @@ The DataLoader package provides a comprehensive solution for loading and managin
 
 
 =======
+
+## Test Results
+
+![Test Results](tests/test_results.png)
 
 ## Test Results
 
