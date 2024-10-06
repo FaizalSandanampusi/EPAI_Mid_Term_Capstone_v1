@@ -31,7 +31,7 @@ jobs:
     - name: Run tests
       id: run_tests  # Added an ID to reference this step
       run: |
-        python -m unittest discover tests > test_results.txt
+        python -m unittest discover tests > tests/test_results.txt  # Store results in the tests folder
         echo "Tests completed."  # Indicate tests are done
 
     - name: Capture test results image
@@ -39,7 +39,7 @@ jobs:
         python - <<EOF
         from PIL import Image, ImageDraw, ImageFont
         import textwrap
-        with open('test_results.txt', 'r') as f:
+        with open('tests/test_results.txt', 'r') as f:  # Read from the tests folder
             results = f.read()
         img = Image.new('RGB', (800, 600), color='white')
         d = ImageDraw.Draw(img)
@@ -49,18 +49,20 @@ jobs:
         for line in lines:
             d.text((10, y_text), line, font=font, fill=(0, 0, 0))
             y_text += 20
-        img.save('test_results.png')  # Ensure the image is saved
+        img.save('tests/test_results.png')  # Save the image in the tests folder
         EOF
 
-    - name: Update README badge
-      if: success()
+    - name: Update README badge on success
+      if: success()  # Only run this step if previous steps were successful
       run: |
+        # Update the badge in README.md to show "successful"
         sed -i '1s#^#![CI/CD](https://github.com/${{ github.repository }}/workflows/Python%20Tests/badge.svg?label=successful&color=green)\n\n#' README.md
-        echo -e "\n## Test Results\n\n![Test Results](test_results.png)" >> README.md
+        echo -e "\n## Test Results\n\n![Test Results](tests/test_results.png)" >> README.md  # Add test results image
 
     - name: Update README badge on failure
-      if: failure()
+      if: failure()  # Only run this step if any previous step failed
       run: |
+        # Update the badge in README.md to show "failed"
         sed -i '1s#^#![CI/CD](https://github.com/${{ github.repository }}/workflows/Python%20Tests/badge.svg?label=failed&color=red)\n\n#' README.md
 
     - name: Commit and push changes
@@ -68,7 +70,7 @@ jobs:
       run: |
         git config --local user.email "github-actions[bot]@users.noreply.github.com"
         git config --local user.name "github-actions[bot]"
-        git add README.md test_results.png  # Ensure both README and image are added
+        git add README.md tests/test_results.png  # Ensure both README and image are added
         git commit -m "Update CI/CD badge and test results" || echo "No changes to commit"
         git push
       env:
