@@ -39,9 +39,19 @@ jobs:
         python - <<EOF
         from PIL import Image, ImageDraw, ImageFont
         import textwrap
-        with open('tests/test_results.txt', 'r') as f:  # Read from the tests folder
+        with open('test_results.txt', 'r') as f:  # Read from the test results file
             results = f.read()
         img = Image.new('RGB', (800, 600), color='white')
+        d = ImageDraw.Draw(img)
+        font = ImageFont.load_default()
+        lines = textwrap.wrap(results, width=70)
+        y_text = 10
+        for line in lines:
+            d.text((10, y_text), line, font=font, fill=(0, 0, 0))
+            y_text += 20
+        img.save('test_results.png')  # Save the image
+        with open('tests/test_results.txt', 'w') as out_f:  # Save results back to tests folder
+            out_f.write(results)  # Write the results to the text file
         EOF
 
     - name: Update README badge on success
